@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Renah! 🎂✨</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display & Great Vibes for romantic typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        script: ['"Great Vibes"', 'cursive'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        redTheme: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                        },
+                        blush: '#fff0f3',
+                        cream: '#fdfbf7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fee2e2 50%, #fecaca 100%);
+            overflow-x: hidden;
+            touch-action: pan-y;
+        }
+
+        .script-title {
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 2px 2px 4px rgba(220, 38, 38, 0.15);
+        }
+
+        .serif-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Floating particles canvas background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Candle flame flicker animation */
+        @keyframes flicker {
+            0%, 100% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            50% { transform: scale(1.15) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 8px #ffdf7e); }
+        }
+
+        .flame {
+            animation: flicker 0.6s infinite ease-in-out alternate;
+            transform-origin: bottom center;
+        }
+
+        /* Smoke puff animation */
+        @keyframes smokeRise {
+            0% { transform: translateY(0) scale(0.5); opacity: 0.8; }
+            100% { transform: translateY(-60px) scale(2.2); opacity: 0; }
+        }
+
+        .smoke-particle {
+            position: absolute;
+            background: rgba(220, 220, 220, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: smokeRise 1.2s forwards ease-out;
+        }
+
+        /* Pulse glow for buttons and interactive elements */
+        @keyframes softPulse {
+            0%, 100% { box-shadow: 0 0 15px rgba(248, 113, 113, 0.4); }
+            50% { box-shadow: 0 0 25px rgba(248, 113, 113, 0.8); }
+        }
+
+        .pulse-glow {
+            animation: softPulse 2.5s infinite ease-in-out;
+        }
+
+        /* Page transition utilities */
+        .page-section {
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        .letter-paper {
+            background: #fffdf9;
+            background-image: repeating-linear-gradient(#fffdf9, #fffdf9 31px, #f4eee1 31px, #f4eee1 32px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.12), 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Custom scrollbar for letter */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(254, 226, 226, 0.5);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f87171;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col justify-between text-gray-700 relative">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Top Navigation / Controls Bar -->
+    <header class="w-full p-4 md:p-6 flex justify-between items-center z-20 relative max-w-5xl mx-auto">
+        <div class="flex items-center space-x-2">
+            <span class="inline-block w-3 h-3 rounded-full bg-redTheme-400 animate-ping"></span>
+            <span class="font-serif text-sm tracking-widest text-redTheme-600 uppercase font-semibold">October 9 • Renah's Day</span>
+        </div>
+        <div></div>
+    </header>
+
+    <!-- Main Container for Story Flow -->
+    <main class="flex-1 flex items-center justify-center relative z-10 w-full max-w-4xl mx-auto px-4 py-2">
+
+        <!-- PAGE 1: Welcome -->
+        <section id="page-welcome" class="page-section w-full flex flex-col items-center text-center space-y-6 relative">
+            
+            <!-- Left Scattered Pictures (Desktop) -->
+            <div class="hidden md:block absolute -left-12 lg:-left-32 xl:-left-48 top-0 bottom-0 w-48 lg:w-64 pointer-events-none z-0">
+                <img src="picture4.jpg" alt="Memory" class="absolute top-[5%] left-4 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-lg border-[6px] border-white transform -rotate-12 opacity-90">
+                <img src="picture5.jpg" alt="Memory" class="absolute top-[35%] left-16 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-xl border-[6px] border-white transform rotate-6 opacity-95">
+                <img src="picture6.jpg" alt="Memory" class="absolute top-[65%] left-0 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-lg border-[6px] border-white transform -rotate-6 opacity-90">
+            </div>
+
+            <!-- Right Scattered Pictures (Desktop) -->
+            <div class="hidden md:block absolute -right-12 lg:-right-32 xl:-right-48 top-0 bottom-0 w-48 lg:w-64 pointer-events-none z-0">
+                <img src="picture7.jpg" alt="Memory" class="absolute top-[10%] right-8 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-lg border-[6px] border-white transform rotate-12 opacity-90">
+                <img src="picture8.jpg" alt="Memory" class="absolute top-[40%] right-20 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-xl border-[6px] border-white transform -rotate-12 opacity-95">
+                <img src="picture9.jpg" alt="Memory" class="absolute top-[70%] right-4 w-32 h-44 lg:w-44 lg:h-56 object-cover rounded-xl shadow-lg border-[6px] border-white transform rotate-6 opacity-90">
+            </div>
+
+            <div class="space-y-2 animate-fade-in relative z-10">
+                <span class="px-4 py-1.5 rounded-full bg-redTheme-100/80 text-redTheme-600 text-xs sm:text-sm font-semibold tracking-wider uppercase border border-redTheme-200">
+                    
+                </span>
+                <h1 class="script-title text-6xl sm:text-8xl md:text-9xl text-redTheme-600 mt-2">
+                    Happy Birthday, Renah Rits!
+                </h1>
+                <p class="serif-text italic text-lg sm:text-2xl text-gray-600 max-w-xl mx-auto pt-2">
+                
+                </p>
+            </div>
+
+            <!-- Picture Bouquet Arrangement -->
+            <div class="relative w-full max-w-[280px] sm:max-w-xs mx-auto h-52 sm:h-64 mt-6 sm:mt-10 mb-4 flex justify-center items-end group cursor-pointer z-10">
+                <img src="picture1.jpg" alt="Memory 1" class="absolute w-28 sm:w-36 h-36 sm:h-48 object-cover rounded-2xl shadow-xl transform -rotate-15 -translate-x-16 sm:-translate-x-20 translate-y-4 sm:translate-y-6 border-4 border-redTheme-50 transition-all duration-500 group-hover:-rotate-25 group-hover:-translate-x-20 sm:group-hover:-translate-x-28 group-hover:translate-y-2 z-0">
+                <img src="picture3.jpg" alt="Memory 3" class="absolute w-28 sm:w-36 h-36 sm:h-48 object-cover rounded-2xl shadow-xl transform rotate-15 translate-x-16 sm:translate-x-20 translate-y-4 sm:translate-y-6 border-4 border-redTheme-50 transition-all duration-500 group-hover:rotate-25 group-hover:translate-x-20 sm:group-hover:translate-x-28 group-hover:translate-y-2 z-0">
+                <img src="picture2.jpg" alt="Renah" class="absolute w-32 sm:w-44 h-44 sm:h-56 object-cover rounded-2xl shadow-2xl z-10 border-[5px] border-white transition-all duration-500 group-hover:-translate-y-4">
+                
+                <div class="absolute -bottom-5 sm:-bottom-6 z-20 flex justify-center items-center w-full pointer-events-none transition-transform duration-500 group-hover:scale-110">
+                    <i class="fa-solid fa-ribbon text-5xl sm:text-6xl text-redTheme-400 drop-shadow-md"></i>
+                </div>
+            </div>
+
+            <div class="pt-6 sm:pt-10 relative z-10">
+                <button onclick="goToPage(2)" class="pulse-glow bg-gradient-to-r from-redTheme-400 to-redTheme-500 hover:from-redTheme-500 hover:to-redTheme-600 text-white font-medium px-8 py-4 rounded-full text-lg sm:text-xl shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center space-x-3 cursor-pointer">
+                    <span>Begin Journey</span>
+                    <i class="fa-solid fa-heart text-sm animate-bounce"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 2: Birthday Cake & Candles -->
+        <section id="page-cake" class="page-section w-full hidden flex-col items-center text-center space-y-6">
+            <div class="space-y-1">
+                <h2 class="script-title text-5xl sm:text-7xl text-redTheme-600">Here's ur birthday cake</h2>
+                <p id="cake-instruction" class="serif-text italic text-base sm:text-xl text-gray-600">
+                    Make a wish
+                </p>
+            </div>
+
+            <!-- Interactive Cake Container -->
+            <div class="relative py-8 cursor-pointer group" onclick="blowOutCandles()" title="Tap to blow out candles!">
+                <div class="relative w-64 sm:w-80 h-72 sm:h-80 mx-auto transition-transform duration-300 group-hover:scale-105">
+                    <!-- Candles -->
+                    <div id="candles-container" class="absolute top-2 w-full flex justify-center space-x-6 z-20">
+                        <div class="relative flex flex-col items-center">
+                            <div id="flame-1" class="flame w-4 h-7 bg-amber-300 rounded-full shadow-[0_0_12px_#ffae00] mb-1"></div>
+                            <div class="w-3 h-14 bg-gradient-to-r from-redTheme-200 via-white to-redTheme-300 rounded-sm shadow-md"></div>
+                        </div>
+                        <div class="relative flex flex-col items-center -mt-3">
+                            <div id="flame-2" class="flame w-5 h-8 bg-amber-300 rounded-full shadow-[0_0_15px_#ffae00] mb-1" style="animation-delay: 0.2s;"></div>
+                            <div class="w-3 h-16 bg-gradient-to-r from-redTheme-200 via-white to-redTheme-300 rounded-sm shadow-md"></div>
+                        </div>
+                        <div class="relative flex flex-col items-center">
+                            <div id="flame-3" class="flame w-4 h-7 bg-amber-300 rounded-full shadow-[0_0_12px_#ffae00] mb-1" style="animation-delay: 0.4s;"></div>
+                            <div class="w-3 h-14 bg-gradient-to-r from-redTheme-200 via-white to-redTheme-300 rounded-sm shadow-md"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cake Tiers SVG -->
+                    <svg viewBox="0 0 300 260" class="w-full h-full drop-shadow-xl">
+                        <ellipse cx="150" cy="240" rx="130" ry="15" fill="#e5e7eb" stroke="#d1d5db" stroke-width="3"/>
+                        <path d="M 40,160 Q 40,140 150,140 Q 260,140 260,160 L 250,230 Q 150,245 50,230 Z" fill="#fca5a5" stroke="#f87171" stroke-width="2"/>
+                        <path d="M 50,230 Q 150,245 250,230 L 250,240 Q 150,255 50,240 Z" fill="#f87171"/>
+                        <path d="M 40,160 Q 60,185 80,160 Q 100,190 120,160 Q 140,185 160,160 Q 180,190 200,160 Q 220,185 240,160 Q 250,175 260,160 L 260,165 Q 220,195 200,165 Q 140,195 120,165 Q 80,195 40,165 Z" fill="#ffffff" opacity="0.85"/>
+                        <path d="M 70,95 Q 70,80 150,80 Q 230,80 230,95 L 220,155 Q 150,165 80,155 Z" fill="#fef2f2" stroke="#f87171" stroke-width="2"/>
+                        <path d="M 70,95 Q 90,120 110,95 Q 130,125 150,95 Q 170,120 190,95 Q 210,125 230,95 L 230,100 Q 190,130 170,100 Q 130,130 110,100 Q 90,130 70,100 Z" fill="#ffffff" opacity="0.9"/>
+                        <path d="M 100,40 Q 100,30 150,30 Q 200,30 200,40 L 195,90 Q 150,98 105,90 Z" fill="#fca5a5" stroke="#f87171" stroke-width="2"/>
+                        <circle cx="120" cy="42" r="6" fill="#dc2626"/>
+                        <circle cx="150" cy="38" r="6" fill="#dc2626"/>
+                        <circle cx="180" cy="42" r="6" fill="#dc2626"/>
+                    </svg>
+                </div>
+
+                <div class="mt-2 inline-flex items-center space-x-2 bg-redTheme-100 text-redTheme-600 px-4 py-2 rounded-full text-sm font-medium shadow-sm animate-pulse">
+                    <i class="fa-solid fa-wind"></i>
+                    <span id="blow-action-text">Click / Tap to Blow Out Candles</span>
+                </div>
+            </div>
+
+            <div id="cake-next-container" class="opacity-0 pointer-events-none transition-opacity duration-500 pt-2 flex flex-col items-center gap-3">
+                <button onclick="goToPage(3)" class="bg-gradient-to-r from-redTheme-400 to-redTheme-500 hover:from-redTheme-500 hover:to-redTheme-600 text-white font-medium px-8 py-3.5 rounded-full text-lg shadow-md transition-all transform hover:scale-105 cursor-pointer flex items-center space-x-2">
+                    <span>Read Your Birthday Letter</span>
+                    <i class="fa-solid fa-arrow-right text-sm"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- PAGE 3: Birthday Letter -->
+        <section id="page-letter" class="page-section w-full hidden flex-col items-center space-y-6">
+            <div class="text-center space-y-1">
+                <h2 class="script-title text-5xl sm:text-6xl text-redTheme-600">A Letter For You</h2>
+                <p id="letter-instruction" class="serif-text italic text-sm sm:text-base text-gray-500">
+                    
+                </p>
+            </div>
+
+            <!-- Interactive Envelope (Shown first) -->
+            <div id="envelope-container" onclick="openLetterEnvelope()" class="w-full max-w-md mx-auto cursor-pointer transition-all duration-500 hover:scale-105 my-4 group">
+                <div class="bg-white/90 border-2 border-redTheme-200 rounded-3xl p-8 sm:p-12 shadow-2xl text-center relative overflow-hidden flex flex-col items-center justify-center space-y-5 pulse-glow">
+                    <!-- Envelope Icon -->
+                    <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-redTheme-100 text-redTheme-500 flex items-center justify-center shadow-inner transition-transform duration-300 group-hover:scale-110">
+                        <i class="fa-solid fa-envelope-open-text text-5xl sm:text-6xl"></i>
+                    </div>
+                    
+                    <div class="space-y-1">
+                        <span class="px-3 py-1 bg-redTheme-100 text-redTheme-600 rounded-full text-xs font-semibold tracking-wider uppercase"></span>
+                        <h3 class="script-title text-4xl sm:text-5xl text-redTheme-600 pt-2">To: Renah</h3>
+                    </div>
+
+                    <div class="pt-2 flex items-center justify-center space-x-2 text-redTheme-500 font-semibold text-sm sm:text-base">
+                        <span>Tap to Open</span>
+                        <i class="fa-solid fa-heart text-redTheme-500 animate-bounce"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Letter Paper Card Container (Revealed after clicking envelope) -->
+            <div id="letter-paper-container" class="w-full max-w-2xl mx-auto relative px-2 hidden opacity-0 transition-all duration-500 transform scale-95">
+                <div class="absolute -top-4 -left-2 text-redTheme-400 text-2xl z-10 transform -rotate-12 pointer-events-none">
+                    <i class="fa-solid fa-pagelines"></i>
+                </div>
+                <div class="absolute -bottom-4 -right-2 text-redTheme-400 text-2xl z-10 transform rotate-12 pointer-events-none">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+
+                <!-- Scrollable Paper -->
+                <div class="letter-paper rounded-2xl p-6 sm:p-10 max-h-[50vh] sm:max-h-[45vh] overflow-y-auto border border-redTheme-200 relative text-left">
+                    <div class="flex justify-between items-center mb-6 border-b border-redTheme-200 pb-3">
+                        <span class="script-title text-3xl sm:text-4xl text-redTheme-600">To Rena,</span>
+                        <span class="text-xs sm:text-sm font-semibold text-redTheme-400 tracking-wider">October 9, 2026</span>
+                    </div>
+
+                    <div class="space-y-4 text-gray-700 leading-relaxed font-sans text-sm sm:text-base">
+                        <p>
+                        
+                        </p>
+                        <p class="pt-2">
+                            Happy happy birthday!! wishing u good health and more birthdays to come, hays tumatanda ka na HAHAHAHAHAHAH. Stay kupal and I hope u enjoy your special day and get to spend it with the people who make u happy. I hope that all your wishes and dreams come true. take care!
+                        </p>
+                        <p class="pt-2">
+                        
+                        </p>
+                        <div class="pt-6 text-right">
+                            <p class="serif-text italic text-gray-600"></p>
+                            <p class="script-title text-3xl text-redTheme-600 mt-1"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action & Navigation Container (Revealed after clicking envelope) -->
+            <div id="letter-actions" class="w-full max-w-2xl flex flex-wrap items-center justify-center sm:justify-between gap-2.5 pt-2 px-2 hidden opacity-0 transition-all duration-500">
+                <button onclick="goToPage(2)" class="w-full sm:w-auto bg-white/80 hover:bg-white text-redTheme-500 border border-redTheme-200 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm transition-all cursor-pointer">
+                    <i class="fa-solid fa-arrow-left mr-1.5"></i>Back to Cake
+                </button>
+
+                <!-- Play Game Button -->
+                <button onclick="openGameModal()" class="w-full sm:w-auto pulse-glow bg-gradient-to-r from-redTheme-400 to-redTheme-500 hover:from-redTheme-500 hover:to-redTheme-600 text-white font-medium px-5 py-2.5 rounded-full text-sm shadow-md transition-all transform hover:scale-105 cursor-pointer flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-gamepad"></i>
+                    <span>Play Game </span>
+                </button>
+                
+                <!-- Special Video Button -->
+                <button onclick="openVideoModal()" class="w-full sm:w-auto bg-gradient-to-r from-redTheme-400 to-redTheme-500 hover:from-redTheme-500 hover:to-redTheme-600 text-white font-medium px-5 py-2.5 rounded-full text-sm shadow-md transition-all transform hover:scale-105 cursor-pointer flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-video"></i>
+                    <span>Watch Special Video </span>
+                </button>
+
+                <!-- Replay Button -->
+                <button onclick="restartExperience()" class="w-full sm:w-auto bg-white/80 hover:bg-white text-redTheme-500 border border-redTheme-200 px-5 py-2.5 rounded-full text-sm font-medium shadow-sm transition-all cursor-pointer flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Replay</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Video Modal Overlay -->
+    <div id="video-modal" class="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-2xl w-full border border-redTheme-200 transform scale-95 transition-transform duration-300" id="video-modal-content">
+            <div class="flex justify-between items-center px-6 py-4 bg-redTheme-50 border-b border-redTheme-100">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-heart text-redTheme-500"></i>
+                    <h3 class="serif-text font-semibold text-redTheme-600 text-lg">happybday.mp4</h3>
+                </div>
+                <button onclick="closeVideoModal()" class="w-8 h-8 rounded-full bg-redTheme-100 hover:bg-redTheme-200 text-redTheme-600 flex items-center justify-center transition-colors cursor-pointer" title="Close">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="relative bg-black aspect-video flex items-center justify-center">
+                <video id="birthday-video" controls class="w-full h-full object-contain">
+                    <source src="happybday.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <div class="p-4 bg-cream text-center text-xs text-gray-500 font-sans">
+            
+            </div>
+        </div>
+    </div>
+
+    <!-- Claw Machine Game Pop-up Modal -->
+    <div id="game-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-2 sm:p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl max-w-lg w-full h-[90vh] flex flex-col border border-redTheme-200 transform scale-95 transition-transform duration-300" id="game-modal-content">
+            <div class="flex justify-between items-center px-6 py-3 bg-redTheme-50 border-b border-redTheme-100">
+                <div class="flex items-center space-x-2">
+                    <i class="fa-solid fa-gamepad text-redTheme-500"></i>
+                    <h3 class="serif-text font-semibold text-redTheme-600 text-lg">Claw Machine Game </h3>
+                </div>
+                <button onclick="closeGameModal()" class="w-8 h-8 rounded-full bg-redTheme-100 hover:bg-redTheme-200 text-redTheme-600 flex items-center justify-center transition-colors cursor-pointer" title="Close">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <div class="relative bg-[#0d0a1f] flex-1 w-full overflow-hidden">
+                <iframe id="game-iframe" src="" class="w-full h-full border-0"></iframe>
+            </div>
+
+            <div class="p-3 bg-cream text-center text-xs text-gray-500 font-sans">
+                Have fun playing! ✨
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination Dots Indicator -->
+    <footer class="w-full py-4 z-20 flex justify-center items-center space-x-3">
+        <button onclick="goToPage(1)" id="dot-1" class="w-3 h-3 rounded-full bg-redTheme-500 transition-all cursor-pointer" title="Welcome"></button>
+        <button onclick="goToPage(2)" id="dot-2" class="w-3 h-3 rounded-full bg-redTheme-200 transition-all cursor-pointer" title="Birthday Cake"></button>
+        <button onclick="goToPage(3)" id="dot-3" class="w-3 h-3 rounded-full bg-redTheme-200 transition-all cursor-pointer" title="Birthday Letter"></button>
+    </footer>
+
+    <script>
+        let currentPage = 1;
+        let candlesBlown = false;
+
+        function goToPage(pageNum) {
+            currentPage = pageNum;
+            
+            document.getElementById('page-welcome').classList.add('hidden');
+            document.getElementById('page-welcome').classList.remove('flex');
+            
+            document.getElementById('page-cake').classList.add('hidden');
+            document.getElementById('page-cake').classList.remove('flex');
+            
+            document.getElementById('page-letter').classList.add('hidden');
+            document.getElementById('page-letter').classList.remove('flex');
+
+            let target = '';
+            if (pageNum === 1) target = 'page-welcome';
+            if (pageNum === 2) target = 'page-cake';
+            if (pageNum === 3) {
+                target = 'page-letter';
+                resetLetterEnvelope();
+            }
+
+            const activeEl = document.getElementById(target);
+            activeEl.classList.remove('hidden');
+            activeEl.classList.add('flex');
+
+            for (let i = 1; i <= 3; i++) {
+                const dot = document.getElementById(`dot-${i}`);
+                if (i === pageNum) {
+                    dot.classList.remove('bg-redTheme-200');
+                    dot.classList.add('bg-redTheme-500', 'w-6');
+                } else {
+                    dot.classList.remove('bg-redTheme-500', 'w-6');
+                    dot.classList.add('bg-redTheme-200', 'w-3');
+                }
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetLetterEnvelope() {
+            const env = document.getElementById('envelope-container');
+            const paper = document.getElementById('letter-paper-container');
+            const actions = document.getElementById('letter-actions');
+            const instruction = document.getElementById('letter-instruction');
+
+            env.classList.remove('hidden');
+            paper.classList.add('hidden', 'opacity-0', 'scale-95');
+            actions.classList.add('hidden', 'opacity-0');
+            instruction.innerText = "";
+        }
+
+        function openLetterEnvelope() {
+            const env = document.getElementById('envelope-container');
+            const paper = document.getElementById('letter-paper-container');
+            const actions = document.getElementById('letter-actions');
+            const instruction = document.getElementById('letter-instruction');
+
+            // Hide envelope and show letter
+            env.classList.add('hidden');
+            
+            paper.classList.remove('hidden');
+            actions.classList.remove('hidden');
+
+            setTimeout(() => {
+                paper.classList.remove('opacity-0', 'scale-95');
+                paper.classList.add('opacity-100', 'scale-100');
+                actions.classList.remove('opacity-0');
+                actions.classList.add('opacity-100');
+            }, 20);
+
+            instruction.innerText = "";
+            createConfettiBurst();
+        }
+
+        function blowOutCandles() {
+            if (candlesBlown) return;
+            candlesBlown = true;
+
+            const flames = document.querySelectorAll('.flame');
+            flames.forEach((flame, index) => {
+                flame.style.animation = 'none';
+                flame.style.opacity = '0';
+                
+                const smoke = document.createElement('div');
+                smoke.className = 'smoke-particle';
+                smoke.style.width = '20px';
+                smoke.style.height = '20px';
+                smoke.style.left = `${45 + index * 25}%`;
+                smoke.style.top = '10px';
+                flame.parentElement.appendChild(smoke);
+                
+                setTimeout(() => smoke.remove(), 1200);
+            });
+
+            document.getElementById('cake-instruction').innerHTML = "hope ur wish comes true";
+            document.getElementById('blow-action-text').innerText = "candles blown out successfully";
+            
+            createConfettiBurst();
+
+            const nextContainer = document.getElementById('cake-next-container');
+            nextContainer.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function createConfettiBurst() {
+            const colors = ['#ef4444', '#f87171', '#ffdf7e', '#fca5a5', '#ffffff'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.left = '50%';
+                confetti.style.top = '50%';
+                confetti.style.width = `${Math.random() * 8 + 6}px`;
+                confetti.style.height = `${Math.random() * 8 + 6}px`;
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                confetti.style.zIndex = '99';
+                document.body.appendChild(confetti);
+
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 120 + 60;
+                const destX = Math.cos(angle) * speed;
+                const destY = Math.sin(angle) * speed - 50;
+
+                confetti.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) scale(0.3)`, opacity: 0 }
+                ], {
+                    duration: 1000 + Math.random() * 800,
+                    easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
+                }).onfinish = () => confetti.remove();
+            }
+        }
+
+        function restartExperience() {
+            candlesBlown = false;
+            const flames = document.querySelectorAll('.flame');
+            flames.forEach(flame => {
+                flame.style.animation = '';
+                flame.style.opacity = '1';
+            });
+            document.getElementById('cake-instruction').innerHTML = "Make a wish and tap the candles to blow them out ✨";
+            document.getElementById('blow-action-text').innerText = "Click / Tap to Blow Out Candles";
+            document.getElementById('cake-next-container').classList.add('opacity-0', 'pointer-events-none');
+            
+            goToPage(1);
+        }
+
+        function openVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const content = document.getElementById('video-modal-content');
+            const video = document.getElementById('birthday-video');
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+            
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Autoplay note:", e));
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const content = document.getElementById('video-modal-content');
+            const video = document.getElementById('birthday-video');
+
+            video.pause();
+
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        document.getElementById('video-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'video-modal') {
+                closeVideoModal();
+            }
+        });
+
+        function openGameModal() {
+            const modal = document.getElementById('game-modal');
+            const content = document.getElementById('game-modal-content');
+            const iframe = document.getElementById('game-iframe');
+
+            iframe.src = 'clawmachine.html';
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeGameModal() {
+            const modal = document.getElementById('game-modal');
+            const content = document.getElementById('game-modal-content');
+            const iframe = document.getElementById('game-iframe');
+
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                iframe.src = '';
+            }, 300);
+        }
+
+        document.getElementById('game-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'game-modal') {
+                closeGameModal();
+            }
+        });
+
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = 25;
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 6 + 4,
+                speedY: Math.random() * 0.6 + 0.2,
+                speedX: (Math.random() - 0.5) * 0.4,
+                opacity: Math.random() * 0.5 + 0.2,
+                color: Math.random() > 0.5 ? '#f87171' : '#fca5a5',
+                isHeart: Math.random() > 0.4
+            });
+        }
+
+        function drawHeart(x, y, size, color, opacity) {
+            ctx.save();
+            ctx.beginPath();
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = color;
+            ctx.translate(x, y);
+            ctx.scale(size / 15, size / 15);
+            ctx.moveTo(0, 0);
+            ctx.bezierCurveTo(0, -3, -5, -10, -10, -10);
+            ctx.bezierCurveTo(-18, -10, -18, 0, -18, 0);
+            ctx.bezierCurveTo(-18, 10, -10, 16, 0, 22);
+            ctx.bezierCurveTo(10, 16, 18, 10, 18, 0);
+            ctx.bezierCurveTo(18, 0, 18, -10, 10, -10);
+            ctx.bezierCurveTo(5, -10, 0, -3, 0, 0);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function animateBg() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                p.y -= p.speedY;
+                p.x += p.speedX;
+
+                if (p.y < -20) {
+                    p.y = canvas.height + 20;
+                    p.x = Math.random() * canvas.width;
+                }
+
+                if (p.isHeart) {
+                    drawHeart(p.x, p.y, p.size, p.color, p.opacity);
+                } else {
+                    ctx.save();
+                    ctx.globalAlpha = p.opacity;
+                    ctx.fillStyle = '#ffdf7e';
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            });
+
+            requestAnimationFrame(animateBg);
+        }
+        animateBg();
+    </script>
+</body>
+</html>
